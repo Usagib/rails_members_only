@@ -17,6 +17,18 @@ module SessionHelper
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
 
+  def setcurrent_user
+    if cookies[:user_id]
+      user = User.find(cookies.signed[:user_id])
+      if user&.auth(cookies[:remember_token])
+        @current_user = user
+        log_in user
+      end
+    else
+      @current_user = nil
+    end
+  end
+
   def log_out
     session.delete(:user_id)
     @current_user = nil
