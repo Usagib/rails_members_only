@@ -21,6 +21,11 @@ module SessionHelper
     !current_user.nil?
   end
 
+  # Stores the URL trying to be accessed.
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
+  end
+
   def setcurrent_user
     if cookies[:user_id]
       user = User.find(cookies.signed[:user_id])

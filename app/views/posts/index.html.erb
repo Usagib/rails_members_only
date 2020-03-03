@@ -1,0 +1,8 @@
+<h1>Posts#index</h1>
+<% @posts.each do |post| %>
+      <%= post.user.username if logged_in? %>
+      <br>
+      <%= post.title %>
+      <br>
+      <%= post.content %>
+<% end %>
