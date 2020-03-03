@@ -1,3 +1,5 @@
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/Usagib/rails_members_only) 
+
 # README
 
 This README would normally document whatever steps are necessary to get the
