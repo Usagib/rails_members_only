@@ -2,3 +2,5 @@
 <% provide(:button_text, 'Save changes') %>
 <% provide(:url, user_path)%>
 <%= render 'formuser' %>
+
+<%= link_to "Log out", logout_path(:session), method: :delete if logged_in? %>
