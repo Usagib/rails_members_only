@@ -1,8 +1,16 @@
-<h1>Posts#index</h1>
-<% @posts.each do |post| %>
-      <%= post.user.username if logged_in? %>
-      <br>
-      <%= post.title %>
-      <br>
-      <%= post.content %>
-<% end %>
+<div class="container posts-board">
+    <% @posts.each do |post| %>
+    <div class="row">
+      <div class="col-lg-4">
+        <img class="img-fluid rounded mb-3 mb-md-0" src="https://picsum.photos/250/200" alt="">
+      </div>
+      <div class="col-lg-8">
+        <h1> <%= post.user.username if logged_in? %>
+            <%= 'Anonimous' if !logged_in? %>
+          Says:</h1>
+          <h3><%= post.title %></h3>
+          <p><%= post.content %></p>
+      </div>
+    </div>
+    <% end %>
+</div>
