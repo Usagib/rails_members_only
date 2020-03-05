@@ -17,6 +17,10 @@ module SessionHelper
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
 
+  def current_user_check(current_user)
+    return true if session[:user_id].eql?(current_user.id)
+  end
+
   def logged_in?
     !current_user.nil?
   end

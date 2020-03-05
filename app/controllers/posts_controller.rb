@@ -29,6 +29,7 @@ class PostsController < ApplicationController
 
   private
 
+  # defines the user attributes protected
   def post_params
     params.require(:post).permit(:title, :content)
   end

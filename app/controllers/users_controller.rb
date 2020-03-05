@@ -3,6 +3,7 @@
 # Users controllers allows views interaction
 class UsersController < ApplicationController
   before_action :set_user, only: %i[update edit destroy show]
+  before_action :correct_user, only: %i[edit update]
 
   def new
     @user = User.new
@@ -49,5 +50,12 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  # Confirms the correct user.
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to root_url unless current_user_check(@user)
+    flash[:danger] = 'Forbidden' unless current_user_check(@user)
   end
 end
