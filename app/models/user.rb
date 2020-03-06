@@ -38,14 +38,12 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, User.digest(remember_token))
   end
 
-  # def rtest(string)
-  # self.token = string
-  # update_attribute(:remember_digest, User.digest(token))
-  # end
+  def forget
+    update_attribute(:remember_digest, nil)
+  end
 
   def auth(string)
     return false if remember_digest.nil?
-
     Digest::SHA1.hexdigest(string.to_s).eql?(remember_digest)
   end
 
