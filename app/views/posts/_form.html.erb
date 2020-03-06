@@ -3,12 +3,12 @@
     <%= form_with(model: post, local: true) do |f| %>
 
       <%= f.label :title %>
-      <%= f.text_field :title, class: 'form-control' %>
+      <%= f.text_field :title, class: 'form-control margin-field' %>
 
       <%= f.label :content %>
-      <%= f.text_area :content, class: 'form-control' %>
+      <%= f.text_area :content, class: 'form-control margin-field' %>
 
-      <%= f.submit "submit", class: "btn btn-primary mt-5" %>
+      <%= f.submit "Shout!", class: "btn btn-primary margin-top-4" %>
     <% end %>
   </div>
 </div>

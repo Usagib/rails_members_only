@@ -3,10 +3,10 @@
 # User model specifications
 class User < ApplicationRecord
   # formats the email to down case before saving
-  attr_accessor :remember_token
+  attr_accessor :rem_token
   # attr_accessor :token
 
-  before_create :first_token
+  before_create :create_remember_token
   before_save { self.email = email.downcase }
 
   # Allows email validations for correct format
@@ -21,37 +21,16 @@ class User < ApplicationRecord
   has_secure_password
   has_many :posts
 
-  class << self
-    # Returns the hash digest of the given string.
-    def digest(string)
-      Digest::SHA1.hexdigest(string.to_s)
-    end
-
-    # Returns a random token.
-    def new_token
-      SecureRandom.urlsafe_base64
-    end
-  end
-
-  def remember
-    self.remember_token = User.new_token
-    update_attribute(:remember_token, User.digest(remember_token))
-  end
-
-  def forget
+  def forget_me
     update_attribute(:remember_token, nil)
   end
 
-  def auth(string)
-    return false if remember_digest.nil?
-    Digest::SHA1.hexdigest(string.to_s).eql?(remember_digest)
+  def auth(token)
+    remember_token == token
   end
 
-  private
-
-  # Remembers a user in the database for use in persistent sessions.
-  def first_token
-    self.remember_token = User.new_token
-    self.remember_digest = User.digest(remember_token)
+  def create_remember_token
+    rem_token = Digest::SHA1.hexdigest(SecureRandom.urlsafe_base64)
+    self.remember_token = rem_token
   end
 end
