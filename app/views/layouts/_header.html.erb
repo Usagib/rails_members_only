@@ -6,6 +6,7 @@
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Help", help_path %></li>
         <li><%= link_to "Board", posts_path %></li>
+        <li><%= link_to "Sign up", new_user_path if !logged_in? %></li>
         <% if logged_in? %>
           <li><%= link_to "New Scam", new_post_path %></li>
           <li><%= link_to "Profile", current_user %></li>
