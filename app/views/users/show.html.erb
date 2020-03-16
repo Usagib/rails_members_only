@@ -1,0 +1,13 @@
+
+<div class="container posts-new">
+  <div class="row">
+    <h1>MY PROFILE</h1>
+    <div class="col-lg-6">
+      <img class="img-fluid rounded mb-3 mb-md-0" src="https://picsum.photos/150/150" alt="">
+    </div>
+    <div class="col-lg-6">
+      <h1>Hello!, <%= @user.username %></h1>
+      <h3>You have: <%= @user.posts.count %> Scams</h3>
+    </div>
+  </div>
+</div>

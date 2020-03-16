@@ -1,0 +1,27 @@
+<div class="container-fluid sessions-new">
+  <div class="row no-gutter">
+    <div class="d-md-flex col-lg-4 bg-image leftimg"></div>
+      <div class="col-md-8 col-lg-8">
+        <div class="login d-flex align-items-center py-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-6">
+                <h3 class="login-heading mb-4">Welcome back!</h3>
+                <%= form_for(:session, url: login_path ) do |f| %>
+                  <div class="form-label-group">
+                    <%= f.label :email, class: "loginlabel" %>
+                    <%= f.email_field :email, class: 'form-control, logininput', id: "inputEmail" %>
+                  </div>
+                  <div class="form-label-group">
+                    <%= f.label :password, class: "loginlabel" %>
+                    <%= f.password_field :password, class: 'form-control logininput', id: "inputPassword" %>
+                    <%= f.submit "Log in", class: "btn btn-primary btn-login text-uppercase font-weight-bold mb-2" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
